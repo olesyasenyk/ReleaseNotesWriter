@@ -1,0 +1,426 @@
+<h2>Back Office, Hosted Cashier</h2><h3>Back end</h3><table data-layout="full-width\" ac:local-id="87791272-67d5-4d25-9c94-6661f38ae689\">
+    <tbody>
+        <tr>
+            <th class="numberingColumn">
+            </th><th>
+                <p><strong>Jira Number</strong></p>
+            </th>
+            <th>
+                <p><strong>Description</strong></p>
+            </th>
+            <th>
+                <p><strong>Responsible Person</strong></p>
+            </th>
+            <th>
+                <p><strong>Addition/Change/Fix</strong></p>
+            </th>
+            <th>
+                <p><strong>Summary</strong></p>
+            </th>
+            <th>
+                <p><strong>DO DEMO</strong></p>
+            </th>
+            <th>
+                <p><strong>INT/EXT</strong></p>
+            </th>
+            <th>
+                <p><strong>BUS/TEC/OPS</strong></p>
+            </th>
+        </tr>
+    <tr><td class="numberingColumn">1</td><td>https://everymatrix.atlassian.net/browse/MON-11323</td><td>Prepare PoC for new flow as following:
+Current flow:
+we read all data needed for rule kind, then read rules to execute, then feed rule with data, then execute
+
+New flow:
+first read rules to execute, then check what data which we need (go thru all input nodes), then read only that data we really need  for rule execution. then execute rule
+
+this will allow us to reduce calls to DB and performance to minimum 
+
+
+
+test performance
+
+prepare rollout plan</td><td>Valentyn Stepanov
+Valerii Borysov</td><td>Addition</td><td>Prepare PoC for new flow as following:
+Current flow:
+we read all data needed for rule kind, then read rules to execute, then feed rule with data, then execute
+
+New flow:
+first read rules to execute, then check what data which we need (go thru all input nodes), then read only that data we really need  for rule execution. then execute rule
+
+this will allow us to reduce calls to DB and performance to minimum 
+
+
+
+test performance
+
+prepare rollout plan</td><td></td><td>EXT</td><td></td></tr><tr><td class="numberingColumn">2</td><td>https://everymatrix.atlassian.net/browse/MON-12091</td><td>As a Client I want MM to check the CasinoWallet.SuspendedUserFunds on GM side to know what to do (proceed/fail) with the txn after the Delay node procession:
+
+* if 0 - we continue with the txn WD;
+* if not 0 - then smth changed and -we are cancelling txn.- GM sends an error (UserHasSuspendedFunds) to MM (which would be used to reject transaction on MM side).
+
+MM should do all of the existing checks + this new one described above.</td><td>Eugene Martynyuk
+Alina Hnit</td><td>Addition</td><td>As a Client I want MM to check the CasinoWallet.SuspendedUserFunds on GM side to know what to do (proceed/fail) with the txn after the Delay node procession:
+
+* if 0 - we continue with the txn WD;
+* if not 0 - then smth changed and -we are cancelling txn.- GM sends an error (UserHasSuspendedFunds) to MM (which would be used to reject transaction on MM side).
+
+MM should do all of the existing checks + this new one described above.</td><td></td><td>EXT</td><td></td></tr><tr><td class="numberingColumn">3</td><td>https://everymatrix.atlassian.net/browse/MON-12104</td><td>Currently, the Cashier Management tab in BO is not accessible if the user doesn’t have the mm.bo.administration.merchant permission.
+
+!image-20211115-133852.png|width=262,height=84!
+
+!image-20211115-133940.png|width=83.33333333333334%!
+
+Please investigate why this dependency exists. If no valid reason found, remove this dependency, because the mm.bo.localization permission is responsible for this tab.</td><td>Volodymir Pauk
+Olha Sharybura</td><td>Addition</td><td>Currently, the Cashier Management tab in BO is not accessible if the user doesn’t have the mm.bo.administration.merchant permission.
+
+!image-20211115-133852.png|width=262,height=84!
+
+!image-20211115-133940.png|width=83.33333333333334%!
+
+Please investigate why this dependency exists. If no valid reason found, remove this dependency, because the mm.bo.localization permission is responsible for this tab.</td><td></td><td>EXT</td><td></td></tr><tr><td class="numberingColumn">4</td><td>https://everymatrix.atlassian.net/browse/MON-12121</td><td>mm_account:
+read_localized_strings_by_type_v2
+read_localized_string_v1
+read_lookup_values_v3
+read_payment_method_logo_list_v3
+read_widget_configuration_v1
+read_workspaces_v1
+get_paysol_description
+get_paysol_display_name
+
++ read_ps_display_data_by_name_v1, read_payment_solution_by_name_v4, read_payment_solution_by_code_v3
+
+ops:
+read_customer_pending_txns_v8
+read_customer_pending_txns_count_v2
+read_filtered_txns_info_v2
+read_last_txn_activity_time_v1
+read_last_successful_customer_txn_by_ps_v5
+get_transaction_refunded_amount_v2
+
+Testing: 
+localization - full
+payment solutions - full + cashier
+cashier - pending txns page
+fx recalc job
+Health check
+workspaces
+widget
+</td><td>Volodymir Pauk
+Alina Hnit</td><td>Addition</td><td>mm_account:
+read_localized_strings_by_type_v2
+read_localized_string_v1
+read_lookup_values_v3
+read_payment_method_logo_list_v3
+read_widget_configuration_v1
+read_workspaces_v1
+get_paysol_description
+get_paysol_display_name
+
++ read_ps_display_data_by_name_v1, read_payment_solution_by_name_v4, read_payment_solution_by_code_v3
+
+ops:
+read_customer_pending_txns_v8
+read_customer_pending_txns_count_v2
+read_filtered_txns_info_v2
+read_last_txn_activity_time_v1
+read_last_successful_customer_txn_by_ps_v5
+get_transaction_refunded_amount_v2
+
+Testing: 
+localization - full
+payment solutions - full + cashier
+cashier - pending txns page
+fx recalc job
+Health check
+workspaces
+widget
+</td><td></td><td>EXT</td><td></td></tr><tr><td class="numberingColumn">5</td><td>https://everymatrix.atlassian.net/browse/MON-12184</td><td>Current behavior of UCS key MoneyMatrix.Cashier.ReturnLastUserTxnPayMethod:
+
+* if selected, returns to UI the payment method that was last used by customer for this transaction type (doesn't matter if the txn was successful)
+* if not selected, the method isn’t returned
+
+Required behavior of UCS key MoneyMatrix.Cashier.ReturnLastUserTxnPayMethod:
+
+* if selected, returns to UI the payment method that was last used by customer for this transaction type and resulted in a SUCCESS transaction
+* if not selected, the method isn’t returned
+
+Add logic to remove LastUsedPaymentMethod field if that method is not alloved for user.</td><td>Volodymir Pauk
+Valerii Borysov</td><td>Addition</td><td>Current behavior of UCS key MoneyMatrix.Cashier.ReturnLastUserTxnPayMethod:
+
+* if selected, returns to UI the payment method that was last used by customer for this transaction type (doesn't matter if the txn was successful)
+* if not selected, the method isn’t returned
+
+Required behavior of UCS key MoneyMatrix.Cashier.ReturnLastUserTxnPayMethod:
+
+* if selected, returns to UI the payment method that was last used by customer for this transaction type and resulted in a SUCCESS transaction
+* if not selected, the method isn’t returned
+
+Add logic to remove LastUsedPaymentMethod field if that method is not alloved for user.</td><td></td><td>EXT</td><td></td></tr><tr><td class="numberingColumn">6</td><td>https://everymatrix.atlassian.net/browse/MON-12188</td><td>* As a Business I want MM to reject transaction based on the "UserHasSuspendedFunds" error which is coming from GM, related to the CasinoWallet.SuspendedUserFunds</td><td>Eugene Martynyuk
+Alina Hnit</td><td>Addition</td><td>* As a Business I want MM to reject transaction based on the "UserHasSuspendedFunds" error which is coming from GM, related to the CasinoWallet.SuspendedUserFunds</td><td></td><td>EXT</td><td></td></tr><tr><td class="numberingColumn">7</td><td>https://everymatrix.atlassian.net/browse/MON-12198</td><td></td><td>Oleg Musyanovych
+Vitaliy Ladan</td><td>Addition</td><td></td><td></td><td>EXT</td><td></td></tr></tbody>
+</table><h3>Front end</h3><table data-layout="full-width" ac:local-id="1fab943e-0efa-4e1b-a92a-b4e88bbf0b15">
+    <tbody>
+        <tr>
+            <th class="numberingColumn">
+            </th><th>
+                <p><strong>Jira Number</strong></p>
+            </th>
+            <th>
+                <p><strong>Description</strong></p>
+            </th>
+            <th>
+                <p><strong>Responsible Person</strong></p>
+            </th>
+            <th>
+                <p><strong>Addition/Change/Fix</strong></p>
+            </th>
+            <th>
+                <p><strong>Summary</strong></p>
+            </th>
+            <th>
+                <p><strong>DO DEMO</strong></p>
+            </th>
+            <th>
+                <p><strong>INT/EXT</strong></p>
+            </th>
+            <th>
+                <p><strong>BUS/TEC/OPS</strong></p>
+            </th>
+        </tr>
+    <tr><td class="numberingColumn">1</td><td>https://everymatrix.atlassian.net/browse/MON-11997</td><td>Current behaviour: all requests to cashier URL return cashier app via nginx, no matter if thy are valid or not
+Expected behaviour: only valid URLs return cashier app via nginx, all other URLs return 404. Nonce in URL is validated and 502 error is returned in case it's not valid
+
+To do: write code in cashier node.js to validate URL from nginx and nonce in that URL. From nginx redirect any URL to that app. After nonce is validated - return index.html as before. Otherwise return error</td><td>Natalya Anisimova
+Valerii Borysov</td><td>Addition</td><td>Current behaviour: all requests to cashier URL return cashier app via nginx, no matter if thy are valid or not
+Expected behaviour: only valid URLs return cashier app via nginx, all other URLs return 404. Nonce in URL is validated and 502 error is returned in case it's not valid
+
+To do: write code in cashier node.js to validate URL from nginx and nonce in that URL. From nginx redirect any URL to that app. After nonce is validated - return index.html as before. Otherwise return error</td><td></td><td>EXT</td><td></td></tr><tr><td class="numberingColumn">2</td><td>https://everymatrix.atlassian.net/browse/MON-11923</td><td>Please find the example in logs below:
+https://backoffice-stage.everymatrix.com/1000/money/transactions/all?transactionCode=c431ca92122b11ec8a9306bdf1f7677a000006
+
+The UI issue is shown on screenshot below:
+ !image-2021-09-17-18-44-14-598.png|thumbnail! </td><td>Viktoriia Chobit
+Uliana Oliinyk</td><td>Fix</td><td>Please find the example in logs below:
+https://backoffice-stage.everymatrix.com/1000/money/transactions/all?transactionCode=c431ca92122b11ec8a9306bdf1f7677a000006
+
+The UI issue is shown on screenshot below:
+ !image-2021-09-17-18-44-14-598.png|thumbnail! </td><td></td><td>EXT</td><td></td></tr><tr><td class="numberingColumn">3</td><td>https://everymatrix.atlassian.net/browse/MON-12094</td><td>Steps to reproduce:
+1) Set skin 2 in System Configuration
+2) Open Pending Withdrawals on whole page (no in iframe) 
+You can get link via Postman
+
+Actual result - Background doesn't cover whole Pending Withdrawals page 
+Expected result - Background covers whole Pending Withdrawals page 
+
+!image-2021-11-10-13-58-37-813.png|width=200,height=183!
+
+ </td><td>Viktoriia Chobit
+Olha Sharybura</td><td>Fix</td><td>Steps to reproduce:
+1) Set skin 2 in System Configuration
+2) Open Pending Withdrawals on whole page (no in iframe) 
+You can get link via Postman
+
+Actual result - Background doesn't cover whole Pending Withdrawals page 
+Expected result - Background covers whole Pending Withdrawals page 
+
+!image-2021-11-10-13-58-37-813.png|width=200,height=183!
+
+ </td><td></td><td>EXT</td><td></td></tr><tr><td class="numberingColumn">4</td><td>https://everymatrix.atlassian.net/browse/MON-12149</td><td>The styled text in Cashier Management 'Bonus' section displays incorrectly in Cashier. 
+Casheir Management 
+ !image-2021-11-25-15-32-27-650.png|thumbnail! 
+Cashier (Winmaster skin)
+ !image-2021-11-25-15-33-44-669.png|thumbnail! </td><td>Viktoriia Chobit
+Olha Sharybura</td><td>Fix</td><td>The styled text in Cashier Management 'Bonus' section displays incorrectly in Cashier. 
+Casheir Management 
+ !image-2021-11-25-15-32-27-650.png|thumbnail! 
+Cashier (Winmaster skin)
+ !image-2021-11-25-15-33-44-669.png|thumbnail! </td><td></td><td>EXT</td><td></td></tr><tr><td class="numberingColumn">5</td><td>https://everymatrix.atlassian.net/browse/MON-12175</td><td>!image-2021-12-06-16-57-00-798.png|thumbnail!
+Part of text goes out of page borders on 360 px wide screen (EL only)</td><td>Viktoriia Chobit
+Valerii Borysov</td><td>Fix</td><td>!image-2021-12-06-16-57-00-798.png|thumbnail!
+Part of text goes out of page borders on 360 px wide screen (EL only)</td><td></td><td>EXT</td><td></td></tr><tr><td class="numberingColumn">6</td><td>https://everymatrix.atlassian.net/browse/MON-12196</td><td>*STR*:
+1. Anable Last Used Payment Method checkbox in UCS
+2. Go to Test Merchant ([https://merchant-stage.moneymatrix.local/);|https://merchant-stage.moneymatrix.local/);] Click 'Go to monolith'; Click 'Create' button
+3. Make a transaction with payment method (f.e.  Pay4Fun.Go.Pix)
+4. Deactivate priviously used payment method (Pay4Fun.Go.Pix)
+5.  Init a transaction with any other activated payment method
+
+*Expected result*:
+Successful response is received.
+Cashier page with payment method is opened in new tab.
+Icon is present.
+Description, amount and 'make deposit' button are displayed.
+
+*Actual result*:
+Successful response is received.
+Cashier page with payment method is opened in new tab.
+Icon is present.
+Description, amount and 'make deposit' button are not displayed.</td><td>Viktoriia Chobit
+Andrii Panasiuk</td><td>Fix</td><td>*STR*:
+1. Anable Last Used Payment Method checkbox in UCS
+2. Go to Test Merchant ([https://merchant-stage.moneymatrix.local/);|https://merchant-stage.moneymatrix.local/);] Click 'Go to monolith'; Click 'Create' button
+3. Make a transaction with payment method (f.e.  Pay4Fun.Go.Pix)
+4. Deactivate priviously used payment method (Pay4Fun.Go.Pix)
+5.  Init a transaction with any other activated payment method
+
+*Expected result*:
+Successful response is received.
+Cashier page with payment method is opened in new tab.
+Icon is present.
+Description, amount and 'make deposit' button are displayed.
+
+*Actual result*:
+Successful response is received.
+Cashier page with payment method is opened in new tab.
+Icon is present.
+Description, amount and 'make deposit' button are not displayed.</td><td></td><td>EXT</td><td></td></tr></tbody>
+</table><h3>Vendor integration</h3><table data-layout="full-width" ac:local-id="0245dda3-3fe8-44a2-834f-5b3afcbec1cd">
+    <tbody>
+        <tr>
+            <th class="numberingColumn">
+            </th><th>
+                <p><strong>Jira Number</strong></p>
+            </th>
+            <th>
+                <p><strong>Description</strong></p>
+            </th>
+            <th>
+                <p><strong>Responsible Person</strong></p>
+            </th>
+            <th>
+                <p><strong>Addition/Change/Fix</strong></p>
+            </th>
+            <th>
+                <p><strong>Summary</strong></p>
+            </th>
+            <th>
+                <p><strong>DO DEMO</strong></p>
+            </th>
+            <th>
+                <p><strong>INT/EXT</strong></p>
+            </th>
+            <th>
+                <p><strong>BUS/TEC/OPS</strong></p>
+            </th>
+        </tr>
+    <tr><td class="numberingColumn">1</td><td>https://everymatrix.atlassian.net/browse/MON-12072</td><td>We need to create a Deposit method for Offline.Shop. 
+
+Acceptance criteria:
+1. There should be a method that creates Deposit in MM.
+2. The deposit is visible in TMA.
+3. NEWDEPOSIT notification is sent to GM after Deposit creation.
+
+The Deposit flow will be the following:
+
+!image-20211104-130551.png|width=75%!</td><td>Taras Sharko
+Mariana Kukhta</td><td>Addition</td><td>We need to create a Deposit method for Offline.Shop. 
+
+Acceptance criteria:
+1. There should be a method that creates Deposit in MM.
+2. The deposit is visible in TMA.
+3. NEWDEPOSIT notification is sent to GM after Deposit creation.
+
+The Deposit flow will be the following:
+
+!image-20211104-130551.png|width=75%!</td><td></td><td>EXT</td><td></td></tr><tr><td class="numberingColumn">2</td><td>https://everymatrix.atlassian.net/browse/MON-12107</td><td>As a Client I want to have Payhera implemented so that it can be offered as a new payment solution for Artemisbet customers.
+
+Payhera supports 1 Deposit with redirect and 2 WD: Papara and Bank Transfer.
+
+For details please follow the link: [https://everymatrix.atlassian.net/l/c/LrG6FtgP|https://everymatrix.atlassian.net/l/c/LrG6FtgP|smart-link] 
+
+API documentation: [http://payhera.co/api_doc/|http://payhera.co/api_doc/|smart-link] 
+
+API endpoint, credentials and test backoffice access: [https://everymatrix.atlassian.net/l/c/Fn2SJ036|https://everymatrix.atlassian.net/l/c/Fn2SJ036|smart-link] 
+
+IPs to whitelist:
+
+
+Production: will be supplied at a later stage.
+
+Supported countries/currencies, logos [https://everymatrix.atlassian.net/l/c/d3KbUR5R|https://everymatrix.atlassian.net/l/c/d3KbUR5R|smart-link] 
+
+
+
+The integration should be implemented on CMS/Web Api.</td><td>Mykyta Dudchenko
+Uliana Oliinyk</td><td>Addition</td><td>As a Client I want to have Payhera implemented so that it can be offered as a new payment solution for Artemisbet customers.
+
+Payhera supports 1 Deposit with redirect and 2 WD: Papara and Bank Transfer.
+
+For details please follow the link: [https://everymatrix.atlassian.net/l/c/LrG6FtgP|https://everymatrix.atlassian.net/l/c/LrG6FtgP|smart-link] 
+
+API documentation: [http://payhera.co/api_doc/|http://payhera.co/api_doc/|smart-link] 
+
+API endpoint, credentials and test backoffice access: [https://everymatrix.atlassian.net/l/c/Fn2SJ036|https://everymatrix.atlassian.net/l/c/Fn2SJ036|smart-link] 
+
+IPs to whitelist:
+
+
+Production: will be supplied at a later stage.
+
+Supported countries/currencies, logos [https://everymatrix.atlassian.net/l/c/d3KbUR5R|https://everymatrix.atlassian.net/l/c/d3KbUR5R|smart-link] 
+
+
+
+The integration should be implemented on CMS/Web Api.</td><td></td><td>EXT</td><td></td></tr><tr><td class="numberingColumn">3</td><td>https://everymatrix.atlassian.net/browse/MON-12138</td><td>As a Client I want you to implement new methods Instapays HayHay and Instapays Express Havale from feature request [https://everymatrix.atlassian.net/browse/DMF-2863|https://everymatrix.atlassian.net/browse/DMF-2863].
+
+Acceptance criteria: 
+
+* to have methods visible on HC and working as expected according to API documentation
+
+Docs: 
+
+* [http://docv2.instapays.co/#api-hayhayDeposit|http://docv2.instapays.co/#api-hayhayDeposit]</td><td>Maksym Yatskiv
+Andrii Panasiuk</td><td>Addition</td><td>As a Client I want you to implement new methods Instapays HayHay and Instapays Express Havale from feature request [https://everymatrix.atlassian.net/browse/DMF-2863|https://everymatrix.atlassian.net/browse/DMF-2863].
+
+Acceptance criteria: 
+
+* to have methods visible on HC and working as expected according to API documentation
+
+Docs: 
+
+* [http://docv2.instapays.co/#api-hayhayDeposit|http://docv2.instapays.co/#api-hayhayDeposit]</td><td></td><td>EXT</td><td></td></tr><tr><td class="numberingColumn">4</td><td>https://everymatrix.atlassian.net/browse/MON-12182</td><td>Found the bug with the wrong number of characters after the decimal point.
+
+Operator: winmasters.com
+
+PaymentMethod: Neteller
+
+Currency: HUF
+
+Validation: Only whole numbers can be entered, without decimals ('invalid amount').
+
+!image-2021-12-09-15-39-15-890.png|width=200,height=183!
+
+ 
+
+!image-2021-12-09-15-39-30-213.png|width=200,height=183!
+
+ 
+
+!image-2021-12-09-15-39-48-874.png|width=200,height=183!
+
+For QA: UCS option is present to control this currency and others.
+
+ </td><td>Oleg Musyanovych
+Mariana Kukhta</td><td>Fix</td><td>Found the bug with the wrong number of characters after the decimal point.
+
+Operator: winmasters.com
+
+PaymentMethod: Neteller
+
+Currency: HUF
+
+Validation: Only whole numbers can be entered, without decimals ('invalid amount').
+
+!image-2021-12-09-15-39-15-890.png|width=200,height=183!
+
+ 
+
+!image-2021-12-09-15-39-30-213.png|width=200,height=183!
+
+ 
+
+!image-2021-12-09-15-39-48-874.png|width=200,height=183!
+
+For QA: UCS option is present to control this currency and others.
+
+ </td><td></td><td>EXT</td><td></td></tr></tbody>
+</table>

@@ -1,0 +1,34 @@
+{
+  "id": "3130687556",
+  "type": "page",
+  "status": "current",
+  "title": "RN",
+  "space": {
+    "id": 41582593,
+    "key": "MON",
+    "name": "MoneyMatrix",
+    "type": "global",
+    "status": "current" 
+  },
+  
+  "version": {
+    "by": {
+      "type": "known",
+      "accountId": "5e2ea669f4c6820e739444af",
+      "accountType": "atlassian",
+      "email": "olesia.falafivka@everymatrix.com"
+    },
+    "when": "2021-10-05T14:15:29.430Z",
+    "friendlyWhen": "just a moment ago",
+    "message": "",
+    "number": 41
+  },
+  "macroRenderedOutput": {},
+  "body": {
+    "storage": {
+      "value": "",
+      "representation": "storage"
+    }
+  },
+  "extensions": {}
+}
